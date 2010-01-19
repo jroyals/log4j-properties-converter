@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender class="org.apache.log4j.ConsoleAppender" name="CONSOLE">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param value="%d{ABSOLUTE} %5p %c{1}:%L - %m%n" name="Pattern"/>
+        </layout>
+    </appender>
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</log4j:configuration>
