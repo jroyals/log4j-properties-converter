@@ -1,7 +1,6 @@
 package com.fragstealers.log4j.jaxb.builder
 
-import generated.Param
-import generated.ObjectFactory
+import com.fragstealers.log4j.xml.binding.ObjectFactory
 
 class LayoutBuilder {
     ObjectFactory objectFactory

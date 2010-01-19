@@ -1,18 +1,8 @@
 package com.fragstealers.log4j.jaxb.builder
 
-import generated.AppenderRef
-import generated.Level
-import generated.ObjectFactory
-
-////////////////////////////////////////////////////////////////////////////////
-//
-// Copyright (c) 2010, Suncorp Metway Limited. All rights reserved.
-//
-// This is unpublished proprietary source code of Suncorp Metway Limited.
-// The copyright notice above does not evidence any actual or intended
-// publication of such source code.
-//
-////////////////////////////////////////////////////////////////////////////////
+import com.fragstealers.log4j.xml.binding.AppenderRef
+import com.fragstealers.log4j.xml.binding.Level
+import com.fragstealers.log4j.xml.binding.ObjectFactory
 
 class RootLoggerBuilder {
 
@@ -34,7 +24,7 @@ class RootLoggerBuilder {
 
             // do we have a valid Level as the first arg? If so, set the level and then remove the element
             if (BuilderUtils.isValidLoggingLevel(configItems[0])) {
-                rootLogger.getPriorityOrLevel().add(new Level(value: configItems.remove(0)))
+                rootLogger.getPriorityOrLevel().add(new Level(value: configItems.remove(0)?.toLowerCase()))
             }
 
             configItems.each {appenderRef ->
