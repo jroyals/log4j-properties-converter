@@ -1,8 +1,8 @@
 package com.fragstealers.log4j.jaxb.builder
 
-import generated.ObjectFactory
+import com.fragstealers.log4j.xml.binding.ObjectFactory
 
-class AppenderBuilder {
+class  AppenderBuilder {
 
     ObjectFactory objectFactory
     private LayoutBuilder layoutBuilder;

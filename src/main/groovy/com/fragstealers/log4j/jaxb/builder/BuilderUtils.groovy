@@ -1,16 +1,7 @@
 package com.fragstealers.log4j.jaxb.builder
 
-import generated.Param
+import com.fragstealers.log4j.xml.binding.Param
 
-////////////////////////////////////////////////////////////////////////////////
-//
-// Copyright (c) 2010, Suncorp Metway Limited. All rights reserved.
-//
-// This is unpublished proprietary source code of Suncorp Metway Limited.
-// The copyright notice above does not evidence any actual or intended
-// publication of such source code.
-//
-////////////////////////////////////////////////////////////////////////////////
 class BuilderUtils {
 
     static void addParam(def objectToAdd, String fullName, String value) {

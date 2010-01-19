@@ -1,9 +1,9 @@
 package com.fragstealers.log4j.jaxb.builder
 
-import generated.ObjectFactory
-import generated.AppenderRef
-import generated.Level
-import generated.Logger
+import com.fragstealers.log4j.xml.binding.AppenderRef
+import com.fragstealers.log4j.xml.binding.Level
+import com.fragstealers.log4j.xml.binding.Logger
+import com.fragstealers.log4j.xml.binding.ObjectFactory
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -29,7 +29,7 @@ class LoggerBuilder {
 
         // do we have a valid Level as the first arg? If so, set the level and then remove the element
         if (BuilderUtils.isValidLoggingLevel(configItems[0])) {
-            logger.setLevel(new Level(value: configItems.remove(0)))
+            logger.setLevel(new Level(value: configItems.remove(0)?.toLowerCase()))
         }
 
         configItems.each {appenderRef ->
