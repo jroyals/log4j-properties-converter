@@ -18,7 +18,7 @@ fi
 # Then add all library jars to the classpath.
 IFS=""
 for a in $UNIX_STYLE_HOME/lib/*; do
-	TMP_CP="$TMP_CP":"$a";
+    TMP_CP="$TMP_CP":"$a";
 done
 
 # Now add the system classpath to the classpath. If running
