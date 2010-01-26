@@ -65,7 +65,7 @@ class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
         def jc = JAXBContext.newInstance("com.fragstealers.log4j.xml.binding");
         def marshaller = jc.createMarshaller()
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        marshaller.setProperty("com.sun.xml.internal.bind.xmlHeaders", "\n<!DOCTYPE log4j:configuration SYSTEM \"log4j.dtd\">\n")
+        marshaller.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE log4j:configuration SYSTEM \"log4j.dtd\">\n")
         marshaller.marshal(configuration, destination)
     }
 }
