@@ -10,8 +10,22 @@
 
     <groupId>com.fragstealers.log4j</groupId>
     <artifactId>log4j-converter</artifactId>
-    <name>Example Project</name>
+    <name>Log4J Properties Converter</name>
     <version>1.0-SNAPSHOT</version>
+
+    <licenses>
+        <license>
+            <name>GNU GENERAL PUBLIC LICENSE</name>
+            <url>http://www.gnu.org/licenses/gpl.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Jason Royals</name>
+            <email>log4j-properties-converter@fragstealers.com</email>
+        </developer>
+    </developers>
 
     <repositories>
         <repository>
