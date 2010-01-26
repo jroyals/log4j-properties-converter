@@ -35,7 +35,7 @@ class CommandLineUI {
 
                 // -o option should override
                 def destFileName = source.name.replaceAll(/.properties/, ".xml")
-                def dest = new File(source.parent, destFileName)
+                def dest = new File(source.absoluteFile.parentFile, destFileName)
 
                 if (opt.v) {
                     println "Using source file ${source.absolutePath} and creating new XML file at ${dest.absolutePath}"
