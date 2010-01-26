@@ -12,6 +12,10 @@
             <source>COPYING</source>
             <outputDirectory>/</outputDirectory>
         </file>
+        <file>
+            <source>README</source>
+            <outputDirectory>/</outputDirectory>
+        </file>
     </files>
 
     <fileSets>
