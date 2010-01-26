@@ -7,9 +7,16 @@
         <format>tar.gz</format>
     </formats>
 
+    <files>
+        <file>
+            <source>COPYING</source>
+            <outputDirectory>/</outputDirectory>
+        </file>
+    </files>
+
     <fileSets>
         <fileSet>
-            <directory>src/main/script</directory>
+            <directory>src/main/bin</directory>
             <outputDirectory>/</outputDirectory>
         </fileSet>
     </fileSets>
