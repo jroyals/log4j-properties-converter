@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="Application">
+        <param value="D:/Foo/Bar/logs/application.log" name="File"/>
+        <param value="TRACE" name="Threshold"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %-5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="Bar">
+        <param value="D:/Foo/Bar/logs/baz.log" name="File"/>
+        <param value="TRACE" name="Threshold"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %-5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="c3p0">
+        <param value="D:/Foo/Bar/logs/c3p0.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="HandHeld">
+        <param value="D:/Foo/Bar/logs/handheld.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="hibernate">
+        <param value="D:/Foo/Bar/logs/hibernate.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="hibernate-cache">
+        <param value="D:/Foo/Bar/logs/hibernate-cache.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="hibernate-jdbc">
+        <param value="D:/Foo/Bar/logs/hibernate-jdbc.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="hibernate-trans">
+        <param value="D:/Foo/Bar/logs/hibernate-trans.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="JBoss">
+        <param value="D:/Foo/Bar/logs/jboss.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="JBossCache">
+        <param value="D:/Foo/Bar/logs/jbosscache.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="JGroups">
+        <param value="D:/Foo/Bar/logs/jgroups.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="Messages">
+        <param value="D:/Foo/Bar/logs/messages.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="Performance">
+        <param value="D:/Foo/Bar/logs/performance.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %5p (%c:%L) - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="tx_info">
+        <param value="D:/Foo/Bar/logs/tx_info.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] %-5p (%c:%L) - %x - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.DailyRollingFileAppender" name="Version">
+        <param value="D:/Foo/Bar/logs/version.log" name="File"/>
+        <layout class="com.foo.commons.util.BooLayout">
+            <param value="[%d] - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <logger name="com.foo">
+        <level value="trace"/>
+        <appender-ref ref="Bar"/>
+    </logger>
+    <logger name="com.foo.merlin.log.ErrorLogger">
+        <level value="info"/>
+        <appender-ref ref="tx_info"/>
+    </logger>
+    <logger name="com.foo.merlin.log.HandHeldAuditLogger">
+        <level value="info"/>
+        <appender-ref ref="HandHeld"/>
+    </logger>
+    <logger name="com.foo.merlin.log.SuccessLogger">
+        <level value="info"/>
+        <appender-ref ref="tx_info"/>
+    </logger>
+    <logger additivity="false" name="com.foo.merlin.performance">
+        <level value="info"/>
+        <appender-ref ref="tx_info"/>
+    </logger>
+    <logger name="com.foo.merlin.performance.ClientSideLogger">
+        <level value="info"/>
+        <appender-ref ref="Performance"/>
+    </logger>
+    <logger name="com.foo.merlin.performance.RAGenerationPerformance">
+        <level value="info"/>
+        <appender-ref ref="Performance"/>
+    </logger>
+    <logger additivity="false" name="com.mchange.v2.c3p0">
+        <level value="warn"/>
+        <appender-ref ref="c3p0"/>
+    </logger>
+    <logger name="messages">
+        <level value="trace"/>
+        <appender-ref ref="Messages"/>
+    </logger>
+    <logger name="org.hibernate">
+        <level value="warn"/>
+        <appender-ref ref="hibernate"/>
+    </logger>
+    <logger name="org.hibernate.cache">
+        <level value="warn"/>
+        <appender-ref ref="hibernate-cache"/>
+    </logger>
+    <logger name="org.hibernate.jdbc">
+        <level value="warn"/>
+        <appender-ref ref="hibernate-jdbc"/>
+    </logger>
+    <logger name="org.hibernate.transaction">
+        <level value="warn"/>
+        <appender-ref ref="hibernate-trans"/>
+    </logger>
+    <logger name="org.jboss">
+        <level value="warn"/>
+        <appender-ref ref="JBoss"/>
+    </logger>
+    <logger name="org.jboss.cache">
+        <level value="warn"/>
+        <appender-ref ref="JBossCache"/>
+    </logger>
+    <logger name="org.jgroups">
+        <level value="warn"/>
+        <appender-ref ref="JGroups"/>
+    </logger>
+    <logger name="performance">
+        <level value="warn"/>
+        <appender-ref ref="Performance"/>
+    </logger>
+    <logger name="version">
+        <level value="warn"/>
+        <appender-ref ref="Version"/>
+    </logger>
+    <root>
+        <level value="trace"/>
+        <appender-ref ref="Application"/>
+    </root>
+</log4j:configuration>

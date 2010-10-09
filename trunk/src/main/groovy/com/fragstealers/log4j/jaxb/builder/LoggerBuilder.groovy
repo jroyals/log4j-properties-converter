@@ -34,7 +34,7 @@ class LoggerBuilder {
         this.objectFactory = objectFactory;
     }
 
-    def buildFrom(String name, String value, Map appenders, Properties props) {
+    def buildFrom(String name, String value, Map appenders, Map props) {
         def logger = objectFactory.createLogger()
         logger.setName(extractLoggerName(name))
         def configItems = value.tokenize(",").collect {it.trim()}
@@ -54,7 +54,7 @@ class LoggerBuilder {
         return logger
     }
 
-    private def checkAdditivity(Properties props, Logger logger) {
+    private def checkAdditivity(Map props, Logger logger) {
         def additivity = getAdditivityProperty(props, logger.getName())
         if (additivity != null) {
             logger.setAdditivity(additivity)
@@ -66,10 +66,10 @@ class LoggerBuilder {
         return loggersRemoved.replaceAll(/log4j\.category\./, "")
     }
 
-    private def getAdditivityProperty(Properties log4jProperties, String loggerName) {
+    private def getAdditivityProperty(Map log4jProperties, String loggerName) {
         String additivityKey = "log4j.additivity.${loggerName}"
 
-        String additivity = log4jProperties.getProperty(additivityKey);
+        String additivity = log4jProperties.get(additivityKey);
         if (additivity != null) {
             return additivity;
         }

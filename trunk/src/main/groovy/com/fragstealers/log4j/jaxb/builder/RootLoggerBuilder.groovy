@@ -34,7 +34,7 @@ class RootLoggerBuilder {
         this.objectFactory = objectFactory;
     }
 
-    def buildFrom(Properties props, Map appenders) {
+    def buildFrom(Map props, Map appenders) {
         def rootLogger = null;
 
         String rootConfigString = getRootLoggerConfig(props)
@@ -57,10 +57,10 @@ class RootLoggerBuilder {
         return rootLogger
     }
 
-    private String getRootLoggerConfig(Properties props) {
-        def rootConfigString = props.getProperty("log4j.rootLogger")
+    private String getRootLoggerConfig(Map props) {
+        def rootConfigString = props.get("log4j.rootLogger")
         if (rootConfigString == null) {
-            rootConfigString = props.getProperty("log4j.rootCategory")
+            rootConfigString = props.get("log4j.rootCategory")
         }
         return rootConfigString
     }
