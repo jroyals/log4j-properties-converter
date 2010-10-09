@@ -34,10 +34,10 @@ class  AppenderBuilder {
         layoutBuilder = new LayoutBuilder(objectFactory: objectFactory)
     }
 
-    def buildFrom(String name, String value, Properties props) {
+    def buildFrom(String name, String value, Map props) {
         def appender = objectFactory.createAppender()
         appender.setName(name)
-        appender.setClazz(props.getProperty("log4j.appender.${name}"))
+        appender.setClazz(props.get("log4j.appender.${name}"))
 
         if (props.containsKey("log4j.appender.${name}.layout".toString())) {
             def layout = layoutBuilder.buildFrom(name, props)

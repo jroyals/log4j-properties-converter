@@ -27,9 +27,9 @@ import com.fragstealers.log4j.xml.binding.ObjectFactory
 class LayoutBuilder {
     ObjectFactory objectFactory
     
-    def buildFrom(String appenderName, Properties props) {
+    def buildFrom(String appenderName, Map props) {
         def layout = objectFactory.createLayout()
-        layout.setClazz(props.getProperty("log4j.appender.${appenderName}.layout"))
+        layout.setClazz(props.get("log4j.appender.${appenderName}.layout"))
 
         props.each {String key, String value ->
             if (key.startsWith("log4j.appender.${appenderName}.layout.")) {

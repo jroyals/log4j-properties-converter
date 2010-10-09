@@ -34,7 +34,8 @@ import com.fragstealers.log4j.xml.binding.Log4JConfiguration
 class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
     private static final KNOWN_LEVELS = ["OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "ALL"]
 
-    def void toXml(Properties log4jProperties, Writer destination) {
+    def void toXml(Properties props, Writer destination) {
+        Map log4jProperties = alphaSortPropertiesFile(props)
         def objectFactory = new ObjectFactory();
         def appenderBuilder = new AppenderBuilder(objectFactory)
         def rootLoggerBuilder = new RootLoggerBuilder(objectFactory)
@@ -51,16 +52,29 @@ class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
         configuration.getAppender().addAll(appenderMap.values())
         configuration.getCategoryOrLogger().addAll(loggers)
 
+        destination.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+        destination.println("<!DOCTYPE log4j:configuration SYSTEM \"log4j.dtd\">");
+
         writeXmlUsingJaxB(configuration, destination)
     }
 
-    private def processSimpleProperties(Log4JConfiguration configuration, Properties log4jProperties) {
+    private TreeMap alphaSortPropertiesFile(Properties props) {
+        def comparator = [compare:
+            {a, b -> return a.toLowerCase().compareTo(b.toLowerCase()) }
+        ] as Comparator
+
+        def log4jProperties = new TreeMap(comparator)
+        log4jProperties.putAll(props)
+        return log4jProperties
+    }
+
+    private def processSimpleProperties(Log4JConfiguration configuration, Map log4jProperties) {
         configuration.setXmlnsLog4J "http://jakarta.apache.org/log4j/"
         configuration.setThreshold log4jProperties["log4j.threshold"]?.toLowerCase()
         configuration.setDebug log4jProperties["log4j.debug"]
     }
 
-    private def processLoggers(Properties log4jProperties, LoggerBuilder loggerBuilder, Map appenderMap) {
+    private def processLoggers(Map log4jProperties, LoggerBuilder loggerBuilder, Map appenderMap) {
         def loggers = []
         log4jProperties.each {String key, String value ->
             if (key ==~ /log4j\.logger\..*/ || key ==~ /log4j\.category\..*/) {
@@ -71,10 +85,10 @@ class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
         return loggers
     }
 
-    private def processAppenders(Properties log4jProperties, AppenderBuilder appenderBuilder) {
+    private def processAppenders(Map log4jProperties, AppenderBuilder appenderBuilder) {
         def appenderMap = [:]
         log4jProperties.each {String key, String value ->
-            if (key ==~ /log4j\.appender\.\w+\s*/) {
+            if (key ==~ /log4j\.appender\.[^\.]+\s*/) {
                 String name = key.tokenize(".").last()
                 def appender = appenderBuilder.buildFrom(name, value, log4jProperties)
                 appenderMap.put(name, appender)
@@ -88,7 +102,6 @@ class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
         def marshaller = jc.createMarshaller()
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE)
         marshaller.setProperty("com.sun.xml.bind.xmlDeclaration", Boolean.FALSE)
-        marshaller.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE log4j:configuration SYSTEM \"log4j.dtd\">\n")
         marshaller.marshal(configuration, destination)
     }
 }
