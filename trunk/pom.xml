@@ -10,6 +10,7 @@
 
     <groupId>com.fragstealers.log4j</groupId>
     <artifactId>log4j-converter</artifactId>
+    <packaging>pom</packaging>
     <name>Log4J Properties Converter</name>
     <version>1.0-SNAPSHOT</version>
 
@@ -19,6 +20,12 @@
             <url>http://www.gnu.org/licenses/gpl.html</url>
         </license>
     </licenses>
+    
+    <modules>
+        <module>log4j-properties-converter-core</module>
+        <module>log4j-properties-converter-cli</module>
+        <module>log4j-properties-converter-webapp</module>
+    </modules>
 
     <developers>
         <developer>
@@ -56,12 +63,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>commons-cli</groupId>
-            <artifactId>commons-cli</artifactId>
-            <version>1.2</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>1.7-rc-2</version>
@@ -85,27 +86,6 @@
             <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.4</version>
-            <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>xmlunit</groupId>
-            <artifactId>xmlunit</artifactId>
-            <version>1.3</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.14</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -127,39 +107,6 @@
             </plugin>
 
             <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <schemaDirectory>src/main/jaxb</schemaDirectory>
-                            <extension>true</extension>
-                            <schemaLanguage>DTD</schemaLanguage>
-                            <generatePackage>com.fragstealers.log4j.xml.binding</generatePackage>
-                            <schemaIncludes>
-                                <schemaInclude>*.dtd</schemaInclude>
-                            </schemaIncludes>
-                            <bindingIncludes>
-                                <bindingInclude>*.jaxb</bindingInclude>
-                            </bindingIncludes>
-                            <args>
-                                <arg>-Xinject-listener-code</arg>
-                            </args>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jvnet.jaxb2-commons</groupId>
-                        <artifactId>property-listener-injector</artifactId>
-                        <version>1.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
                 <inherited>true</inherited>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -167,27 +114,6 @@
                     <source>1.5</source>
                     <target>1.5</target>
                 </configuration>
-            </plugin>
-            
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.2-beta-5</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src/main/assembly/src.xml</descriptor>
-                    </descriptors>
-                    <outputDirectory>${project.build.directory}/dist</outputDirectory>
-                    <finalName>${project.build.finalName}</finalName>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
