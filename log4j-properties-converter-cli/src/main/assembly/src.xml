@@ -4,16 +4,15 @@
     <id>distribution</id>
     <formats>
         <format>zip</format>
-        <format>tar.gz</format>
     </formats>
 
     <files>
         <file>
-            <source>COPYING</source>
+            <source>../COPYING</source>
             <outputDirectory>/</outputDirectory>
         </file>
         <file>
-            <source>README</source>
+            <source>../README</source>
             <outputDirectory>/</outputDirectory>
         </file>
     </files>
