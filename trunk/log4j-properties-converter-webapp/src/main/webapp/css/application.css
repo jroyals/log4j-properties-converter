@@ -1,0 +1,42 @@
+body {
+    font-family: "Verdana", "Arial", "Helvetica", sans-serif;
+    color: black;
+}
+
+h1 {
+    font-size: 1.5em;
+    background-color: black;
+    color: white;
+    width: 85%;
+    height: 1.9em;
+    vertical-align: center;
+    line-height: 1.9em;
+    text-align: center;
+}
+
+.para {
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+}
+
+.success {
+    width: 10em;
+    height: 2em;
+    font-weight: bold;
+    color: #009922;
+}
+
+textarea {
+    font-size: 10px;
+    color: #333333;
+}
+
+.input {
+    border: 1px solid #A5C2C8;
+    line-height: 20px; p
+    adding: 5px 5px 5px 5px;
+    margin: 0 0 5px 0;
+    width: 85%;
+    height: 500px;
+    font: 12px monospace;
+}

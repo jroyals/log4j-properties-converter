@@ -1,0 +1,66 @@
+<html>
+<head>
+    <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.6.custom.css" rel="Stylesheet"/>
+    <link type="text/css" href="css/application.css" rel="Stylesheet"/>
+
+    <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.elastic.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.6.custom.min.js"></script>
+    <script type="text/javascript">
+        var populateResult = function(data) {
+            $("#input").effect("drop", "fast", function() {
+                $("#results").show("slide", "fast");
+            });
+            $("#resultsArea").val(data);
+        }
+
+        $(function() {
+            $("#convertButton").click(function() {
+                var props = $("#props").val();
+
+                $.post("convert", {props: props}, populateResult, "text");
+            });
+
+            $("#props").keyup(function() {
+                var props = $("#props").val();
+                $("#convertButton").attr("disabled", $.trim(props).length == 0);
+            });
+
+            $("#doAnother").click(function() {
+                $("#results").effect("drop", "fast", function() {
+                    $("#input").show("slide", "fast");
+                });
+                $("#props").val("");
+                $("#resultsArea").val("");
+            });
+
+            $("#results").hide();
+            var props = $("#props").val();
+            $("#convertButton").attr("disabled", $.trim(props).length == 0);
+        });
+
+    </script>
+</head>
+<body>
+<div><h1>Log4J Properties to XML Converter</h1></div>
+
+<div id="input">
+    <div class="para">
+        Copy or type in your Log4J Properties below, then hit "Convert"
+    </div>
+
+    <div>
+        <input type="button" value="Convert" id="convertButton" disabled="false">
+    </div>
+
+    <textarea id="props" class="input" wrap="off"></textarea>
+
+</div>
+<div id="results">
+    <!--<div class="success">Success!</div>-->
+    <div class="para">The conversion is below.  <a href="#" id="doAnother">Do another?</a></div>
+
+    <textarea id="resultsArea" wrap="off" class="input"></textarea>
+</div>
+</body>
+</html>
