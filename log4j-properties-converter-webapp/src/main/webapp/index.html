@@ -12,12 +12,15 @@
                 $("#results").show("slide", "fast");
             });
             $("#resultsArea").val(data);
+            $("#convertButton").attr("disabled", false);
+            $("#loader").hide();
         }
 
         $(function() {
             $("#convertButton").click(function() {
                 var props = $("#props").val();
-
+                $(this).attr("disabled", true);
+                $("#loader").show();
                 $.post("convert", {props: props}, populateResult, "text");
             });
 
@@ -37,6 +40,7 @@
             $("#results").hide();
             var props = $("#props").val();
             $("#convertButton").attr("disabled", $.trim(props).length == 0);
+            $("#loader").hide();
         });
 
     </script>
@@ -50,7 +54,8 @@
     </div>
 
     <div>
-        <input type="button" value="Convert" id="convertButton" disabled="false">
+        <input type="button" value="Convert" id="convertButton">
+        <img src="images/ajax-loader.gif" alt="Loading..." id="loader" style="vertical-align: bottom"/>
     </div>
 
     <textarea id="props" class="input" wrap="off"></textarea>
@@ -59,8 +64,24 @@
 <div id="results">
     <!--<div class="success">Success!</div>-->
     <div class="para">The conversion is below.  <a href="#" id="doAnother">Do another?</a></div>
-
+    <div class="blankButton">&nbsp;</div>
     <textarea id="resultsArea" wrap="off" class="input"></textarea>
+</div>
+
+<div class="footer">
+    <div>
+        Log4J Properties Converter Web Application. &copy; Jason Royals 2010.
+    </div>
+
+    <div>
+        Source code for the converter, including this web application,
+        are available from the <a href="http://code.google.com/p/log4j-properties-converter">Log4J Properties Converter
+        project page</a>. This software is licensed to you under the
+        <a href="http://www.gnu.org/licenses">GNU Public License, version 3</a>.
+    </div>
+    <div>
+        <img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+    </div>
 </div>
 </body>
 </html>

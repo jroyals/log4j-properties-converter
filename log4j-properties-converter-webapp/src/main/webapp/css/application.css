@@ -37,6 +37,29 @@ textarea {
     adding: 5px 5px 5px 5px;
     margin: 0 0 5px 0;
     width: 85%;
-    height: 500px;
+    height: 300px;
     font: 12px monospace;
+}
+
+.footer {
+    color: #999999;
+    font-size: 0.6em;
+    width: 85%;
+    text-align: center;
+}
+
+.footer div {
+    padding: 1em;
+}
+
+.footer a {
+    color: #666666;
+}
+
+#convertButton {
+    height: 35px;
+}
+
+.blankButton {
+    height: 35px;
 }
