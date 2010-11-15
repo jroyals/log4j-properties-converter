@@ -17,6 +17,8 @@ h1 {
 .para {
     padding-top: 0.5em;
     padding-bottom: 1em;
+    width: 85%;
+    font-size: 0.85em;
 }
 
 .success {
