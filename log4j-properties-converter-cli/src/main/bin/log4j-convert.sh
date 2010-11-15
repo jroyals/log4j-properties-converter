@@ -30,4 +30,4 @@ else
     TMP_CP=$TMP_CP:$CLASSPATH
 fi
 
-$JAVA -cp $TMP_CP com.fragstealers.log4j.ui.CommandLineUI $1 $2 $3 $4 $5 $6 $7 $8 $9
+$JAVA -cp $TMP_CP com.fragstealers.log4j.ui.cli.CommandLineUI $1 $2 $3 $4 $5 $6 $7 $8 $9

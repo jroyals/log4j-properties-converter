@@ -20,7 +20,7 @@
  *  (at your option) any later version.
  */
 
-package com.fragstealers.log4j.ui
+package com.fragstealers.log4j.ui.cli
 
 import com.fragstealers.log4j.jaxb.JaxbLog4JPropertiesConverter
 
