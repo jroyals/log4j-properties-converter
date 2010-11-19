@@ -49,7 +49,7 @@ class Log4JConverterServiceController {
     @RequestMapping
     def convert(@RequestParam("props") String propsAsText) {
         LOGGER.info "Preparing to process a Log4J Properties file"
-        LOGGER.finest "Contents of the file: ${propsAsText}"
+        LOGGER.fine "Contents of the file: ${propsAsText}"
         def props = new Properties()
         props.load(IOUtils.toInputStream(propsAsText))
 
@@ -58,7 +58,7 @@ class Log4JConverterServiceController {
         def xmlContent = dest.toString()
 
         LOGGER.info "XML file was generated"
-        LOGGER.finest "Contents of the XML file: ${xmlContent}"
+        LOGGER.fine "Contents of the XML file: ${xmlContent}"
         return new ResponseEntity<String>(xmlContent, RESPONSE_HEADERS, HttpStatus.OK);
     }
 }
