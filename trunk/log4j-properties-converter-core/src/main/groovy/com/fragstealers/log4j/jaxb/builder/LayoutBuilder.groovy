@@ -28,11 +28,12 @@ class LayoutBuilder {
     ObjectFactory objectFactory
     
     def buildFrom(String appenderName, Map props) {
+        String string = "log4j.appender.${appenderName}"
         def layout = objectFactory.createLayout()
-        layout.setClazz(props.get("log4j.appender.${appenderName}.layout"))
+        layout.setClazz(props.get(string + ".layout"))
 
         props.each {String key, String value ->
-            if (key.startsWith("log4j.appender.${appenderName}.layout.")) {
+            if (key.startsWith(string + ".layout.")) {
                 BuilderUtils.addParam(layout, key, value)
             }
         }

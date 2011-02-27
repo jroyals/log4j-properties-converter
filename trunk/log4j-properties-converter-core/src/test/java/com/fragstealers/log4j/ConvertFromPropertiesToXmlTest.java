@@ -50,8 +50,6 @@ public class ConvertFromPropertiesToXmlTest {
         String expected = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("log4j.issue4.expected.xml"));
         String actual = writer.toString();
 
-        System.out.println("actual = " + actual);
-
         XMLUnit.setIgnoreWhitespace(true);
         XMLUnit.setControlEntityResolver(new Log4JEntityResolver());
         XMLUnit.setTestEntityResolver(new Log4JEntityResolver());
@@ -60,6 +58,31 @@ public class ConvertFromPropertiesToXmlTest {
         validator.assertIsValid();
         
         XMLAssert.assertXMLEqual(expected, actual);
+    }
+    
+    @Test
+    public void ignoresTrailingWhitespace() throws Exception {
+        StringWriter writer = new StringWriter();
+        Properties log4jProperties = new Properties();
+        log4jProperties.load(getClass().getClassLoader().getResourceAsStream("log4j.issue5.properties"));
+
+        converter.toXml(log4jProperties, writer);
+
+        String expected = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("log4j.issue5.expected.xml"));
+        String actual = writer.toString();
+
+        System.out.println(expected);
+        System.out.println("=============================");
+        System.out.println(actual);
+        
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLUnit.setControlEntityResolver(new Log4JEntityResolver());
+        XMLUnit.setTestEntityResolver(new Log4JEntityResolver());
+
+        Validator validator = new Validator(actual);
+        validator.assertIsValid();
+        
+        XMLAssert.assertXMLEqual(expected, actual);    	
     }
 
     private static class Log4JEntityResolver implements EntityResolver {

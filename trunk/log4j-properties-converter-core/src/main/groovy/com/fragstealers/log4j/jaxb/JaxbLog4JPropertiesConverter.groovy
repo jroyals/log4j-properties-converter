@@ -35,7 +35,8 @@ class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
     private static final KNOWN_LEVELS = ["OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "ALL"]
 
     def void toXml(Properties props, Writer destination) {
-        Map log4jProperties = alphaSortPropertiesFile(props)
+
+        Map log4jProperties = trimStringValues(alphaSortPropertiesFile(props))
         def objectFactory = new ObjectFactory();
         def appenderBuilder = new AppenderBuilder(objectFactory)
         def rootLoggerBuilder = new RootLoggerBuilder(objectFactory)
@@ -59,13 +60,21 @@ class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
     }
 
     private TreeMap alphaSortPropertiesFile(Properties props) {
-        def comparator = [compare:
-            {a, b -> return a.toLowerCase().compareTo(b.toLowerCase()) }
-        ] as Comparator
+        def comparator = [compare: {a, b ->
+            return a.toLowerCase().compareTo(b.toLowerCase())
+        }] as Comparator
 
         def log4jProperties = new TreeMap(comparator)
         log4jProperties.putAll(props)
         return log4jProperties
+    }
+
+    private Map trimStringValues(Map untrimmed) {
+        Map target = [:]
+        untrimmed.each {k, v ->
+            target.put(k?.trim(), v?.trim())
+        }
+        return target
     }
 
     private def processSimpleProperties(Log4JConfiguration configuration, Map log4jProperties) {
