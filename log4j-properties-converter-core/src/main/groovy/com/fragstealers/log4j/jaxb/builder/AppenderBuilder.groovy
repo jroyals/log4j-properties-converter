@@ -35,9 +35,10 @@ class  AppenderBuilder {
     }
 
     def buildFrom(String name, String value, Map props) {
+        String appenderName = "log4j.appender.${name}"
         def appender = objectFactory.createAppender()
         appender.setName(name)
-        appender.setClazz(props.get("log4j.appender.${name}"))
+        appender.setClazz(props.get(appenderName))
 
         if (props.containsKey("log4j.appender.${name}.layout".toString())) {
             def layout = layoutBuilder.buildFrom(name, props)
@@ -45,7 +46,7 @@ class  AppenderBuilder {
         }
 
         props.each {String key, String optionValue ->
-            if (key.startsWith("log4j.appender.${name}.") && !key.contains("layout")) {
+            if (key.startsWith(appenderName + ".") && !key.contains("layout")) {
                 BuilderUtils.addParam(appender, key, optionValue)
             }
         }
