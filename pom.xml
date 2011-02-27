@@ -34,6 +34,12 @@
         </developer>
     </developers>
 
+    <scm>
+        <url>http://code.google.com/p/log4j-properties-converter/source/browse</url>
+        <connection>scm:svn:http://log4j-properties-converter.googlecode.com/svn/trunk</connection>
+        <developerConnection>scm:svn:https://log4j-properties-converter.googlecode.com/svn/trunk</developerConnection>
+    </scm>
+
     <repositories>
         <repository>
             <id>maven2-repository.dev.java.net</id>
