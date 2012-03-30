@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.RequestParam
 @Controller
 @RequestMapping("/convert")
 class Log4JConverterServiceController {
-    private static final Logger LOGGER = Logger.getLogger(Log4JConverterServiceController.class.getName());
+    private static final Logger LOGGER = Logger.getLogger("com.fragstealers.log4j.ui.web.Log4JConverterServiceController");
     private static final HttpHeaders RESPONSE_HEADERS = new HttpHeaders(contentType: MediaType.APPLICATION_XML)
     final Log4JPropertiesConverter log4JPropertiesConverter
 

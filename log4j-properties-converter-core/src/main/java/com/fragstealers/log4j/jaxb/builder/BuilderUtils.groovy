@@ -22,6 +22,23 @@
 
 package com.fragstealers.log4j.jaxb.builder
 
-public enum Levels {
-    OFF, FATAL, ERROR, WARN, INFO, DEBUG, ALL, INHERIT, NULL, TRACE
+import com.fragstealers.log4j.xml.binding.Param
+import java.util.logging.Logger
+
+class BuilderUtils {
+    private static final Logger log = Logger.getLogger("com.fragstealers.log4j.jaxb.builder.BuilderUtils");
+    
+    static levels = ["OFF", "FATAL", "ERROR", "WARN", "INFO", "DEBUG", "ALL", "INHERIT", "NULL", "TRACE"]
+    
+    static void addParam(def objectToAdd, String fullName, String value) {
+        String name = fullName.tokenize(".").last()
+        objectToAdd.getParam().add(new Param(name: name, value: value))
+    }
+
+    static boolean isValidLoggingLevel(String level) {
+        def levelToFind = level?.trim()?.toUpperCase()
+        def result = levels.contains(levelToFind)
+        log.fine("Level '$levelToFind' is a valid Log4J Level? '$result'")
+        return result;
+    }
 }
