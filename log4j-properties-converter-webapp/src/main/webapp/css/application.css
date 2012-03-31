@@ -7,7 +7,7 @@ h1 {
     font-size: 1.5em;
     background-color: black;
     color: white;
-    width: 85%;
+    /*width: 85%;*/
     height: 1.9em;
     vertical-align: center;
     line-height: 1.9em;
@@ -17,7 +17,7 @@ h1 {
 .para {
     padding-top: 0.5em;
     padding-bottom: 1em;
-    width: 85%;
+    /*width: 85%;*/
     font-size: 0.85em;
 }
 
@@ -35,23 +35,24 @@ textarea {
 
 .input {
     border: 1px solid #A5C2C8;
-    line-height: 20px; p
-    adding: 5px 5px 5px 5px;
-    margin: 0 0 5px 0;
-    width: 85%;
+    line-height: 20px;
+    padding: 5px 5px 5px 5px;
+    /*margin: 0 0 5px 0;*/
+    /*width: 85%;*/
     height: 300px;
     font: 12px monospace;
 }
 
 .footer {
-    color: #999999;
+    color: #666666;
     font-size: 0.6em;
-    width: 85%;
+    /*width: 85%;*/
     text-align: center;
+    padding-top: 15px;
 }
 
 .footer div {
-    padding: 1em;
+    /*padding: 1em;*/
 }
 
 .footer a {
