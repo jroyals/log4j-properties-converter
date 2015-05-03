@@ -15,13 +15,12 @@ and it gives you back your file in XML format. Too easy!
 You can also download the command-line interface version of the tool. This is useful if you don't trust the website version,
 or you have a lot of files to convert and you want to script it up.
 
-Get the binary distribution from the "Releases" page on Github. https://github.com/jroyals/log4j-properties-converter/releases
+Get the binary distribution from the "Releases" page on Github, or this direct link will download it for you.  https://github.com/jroyals/log4j-properties-converter/releases/download/log4j-converter-1.1/log4j-properties-converter-cli-1.1-distribution.zip
 
 In order to run log4j-converter command-line interface you need
 
-- Java version 1.6 or better
-
-- Java must be on the path, or JAVA_HOME environment variable must be set
+* Java version 1.6 or better
+* Java must be on the path, or JAVA_HOME environment variable must be set
 
 Once you have downloaded the distribution, unzip it. Then, run...
 
