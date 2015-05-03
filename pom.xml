@@ -27,15 +27,20 @@
     <developers>
         <developer>
             <name>Jason Royals</name>
+            <url>https://github.com/jroyals</url>
             <email>log4j-properties-converter@fragstealers.com</email>
         </developer>
     </developers>
 
     <scm>
-        <url>http://code.google.com/p/log4j-properties-converter/source/browse</url>
-        <connection>scm:svn:http://log4j-properties-converter.googlecode.com/svn/trunk</connection>
-        <developerConnection>scm:svn:https://log4j-properties-converter.googlecode.com/svn/trunk</developerConnection>
+        <url>https://github.com/jroyals/log4j-properties-converter</url>
+        <connection>scm:git:git://github.com/jroyals/log4j-properties-converter.git</connection>
+        <developerConnection>scm:git:git://github.com/jroyals/log4j-properties-converter.git</developerConnection>
     </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
