@@ -13,9 +13,9 @@ and it gives you back your file in XML format. Too easy!
 
 ## The less easy way
 You can also download the command-line interface version of the tool. This is useful if you don't trust the website version,
-or you have a lot of files to convert and you want to script it up.
+or you have a lot of files to convert and you want to script it up. The binary dist is Java and expects that you have a JRE installed already.
 
-Get the binary distribution from the "Releases" page on Github, or this direct link will download it for you.  https://github.com/jroyals/log4j-properties-converter/releases/download/log4j-converter-1.1/log4j-properties-converter-cli-1.1-distribution.zip
+Get the binary (Windows/Linux) distribution from the "Releases" page on Github, or this direct link will download it for you.  https://github.com/jroyals/log4j-properties-converter/releases/download/log4j-converter-1.1/log4j-properties-converter-cli-1.1-distribution.zip
 
 In order to run log4j-converter command-line interface you need
 
