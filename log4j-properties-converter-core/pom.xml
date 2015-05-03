@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>log4j-converter</artifactId>
         <groupId>com.fragstealers.log4j</groupId>
@@ -10,16 +11,6 @@
     <artifactId>log4j-properties-converter-core</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.xml</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.1</version>
-        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -45,35 +36,22 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.12.3</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <schemaDirectory>src/main/jaxb</schemaDirectory>
-                            <extension>true</extension>
+                            <schemaDirectory>src/main/dtd</schemaDirectory>
                             <schemaLanguage>DTD</schemaLanguage>
                             <generatePackage>com.fragstealers.log4j.xml.binding</generatePackage>
                             <schemaIncludes>
                                 <schemaInclude>*.dtd</schemaInclude>
                             </schemaIncludes>
-                            <bindingIncludes>
-                                <bindingInclude>*.jaxb</bindingInclude>
-                            </bindingIncludes>
-                            <args>
-                                <arg>-Xinject-listener-code</arg>
-                            </args>
                         </configuration>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jvnet.jaxb2-commons</groupId>
-                        <artifactId>property-listener-injector</artifactId>
-                        <version>1.0</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>

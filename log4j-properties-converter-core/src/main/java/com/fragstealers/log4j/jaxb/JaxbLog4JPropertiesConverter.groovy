@@ -109,8 +109,8 @@ class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
     private def writeXmlUsingJaxB(Log4JConfiguration configuration, Writer destination) {
         def jc = JAXBContext.newInstance("com.fragstealers.log4j.xml.binding")
         def marshaller = jc.createMarshaller()
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE)
-        marshaller.setProperty("com.sun.xml.bind.xmlDeclaration", Boolean.FALSE)
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true)
+        marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
         marshaller.marshal(configuration, destination)
     }
 }
