@@ -34,8 +34,8 @@
 
     <scm>
         <url>https://github.com/jroyals/log4j-properties-converter</url>
-        <connection>scm:git:git://github.com/jroyals/log4j-properties-converter.git</connection>
-        <developerConnection>scm:git:git://github.com/jroyals/log4j-properties-converter.git</developerConnection>
+        <connection>scm:git:https://github.com/jroyals/log4j-properties-converter.git</connection>
+        <developerConnection>scm:git:https://github.com/jroyals/log4j-properties-converter.git</developerConnection>
     </scm>
 
     <properties>
