@@ -4,7 +4,7 @@ Quite simply, "log4j-properties-converter" converts the Log4J Properties file fo
 
 # How do I run it?
 
-YOu have a couple of options when it comes to converting your properties files...
+You have a couple of options when it comes to converting your properties files...
 
 ## The really easy way
 By far the easiest way to is to use the Log4J to Properties web application at http://log4jprops2xml.royals.net.au. Paste your config into this web app,
