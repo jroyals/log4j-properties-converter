@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>com.fragstealers.log4j</groupId>
         <artifactId>log4j-converter</artifactId>
@@ -32,22 +33,67 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <app.id>log4j-props2xml-hrd</app.id>
+        <app.version>2</app.version>
+        <appengine.version>1.9.21</appengine.version>
+        <gcloud.plugin.version>0.9.58.v20150505</gcloud.plugin.version>
+    </properties>
+
     <build>
         <finalName>log4j-properties-converter-webapp</finalName>
 
         <plugins>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.25</version>
-
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
                 <configuration>
-                    <webAppConfig>
-                        <defaultsDescriptor>src/etc/jetty/webdefault.xml</defaultsDescriptor>                        
-                    </webAppConfig>
+                    <archiveClasses>true</archiveClasses>
+                    <webResources>
+                        <!-- in order to interpolate version from pom into appengine-web.xml -->
+                        <resource>
+                            <directory>${basedir}/src/main/webapp/WEB-INF</directory>
+                            <filtering>true</filtering>
+                            <targetPath>WEB-INF</targetPath>
+                        </resource>
+                        <resource>
+                            <directory>${basedir}/src/main/webapp</directory>
+                            <filtering>true</filtering>
+                            <targetPath>/</targetPath>
+                            <includes>
+                                <include>*.html</include>
+                            </includes>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
-            
+
+            <plugin>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>${appengine.version}</version>
+                <configuration>
+                    <enableJarClasses>false</enableJarClasses>
+                    <version>${app.version}</version>
+                    <!-- Comment in the below snippet to bind to all IPs instead of just localhost -->
+                    <!-- address>0.0.0.0</address>
+                    <port>8080</port -->
+                    <!-- Comment in the below snippet to enable local debugging with a remote debugger
+                         like those included with Eclipse or IntelliJ -->
+                    <!-- jvmFlags>
+                      <jvmFlag>-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n</jvmFlag>
+                    </jvmFlags -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>gcloud-maven-plugin</artifactId>
+                <version>${gcloud.plugin.version}</version>
+                <configuration>
+                    <set_default>true</set_default>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
