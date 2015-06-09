@@ -19,7 +19,6 @@
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  */
-Update UU
 package com.fragstealers.log4j.ui.web;
 
 import com.fragstealers.log4j.core.Log4JPropertiesConverter;
