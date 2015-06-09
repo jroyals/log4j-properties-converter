@@ -14,17 +14,17 @@
             <param value="%5p [%t] (%F:%L) - %m%n" name="ConversionPattern"/>
         </layout>
     </appender>
-    <logger additivity="false" name="org.hibernate.type">
-        <level value="warn"/>
-        <appender-ref ref="R"/>
-    </logger>
     <logger name="org.hibernate.SQL">
-        <level value="debug"/>
+        <level value="DEBUG"/>
         <appender-ref ref="R"/>
         <appender-ref ref="stdout"/>
     </logger>
+    <logger additivity="false" name="org.hibernate.type">
+        <level value="WARN"/>
+        <appender-ref ref="R"/>
+    </logger>
     <root>
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="stdout"/>
         <appender-ref ref="R"/>
     </root>

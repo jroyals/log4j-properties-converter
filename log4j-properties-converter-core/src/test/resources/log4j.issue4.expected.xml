@@ -94,79 +94,79 @@
         </layout>
     </appender>
     <logger name="com.foo">
-        <level value="trace"/>
+        <level value="TRACE"/>
         <appender-ref ref="Bar"/>
     </logger>
     <logger name="com.foo.merlin.log.ErrorLogger">
-        <level value="info"/>
+        <level value="INFO"/>
         <appender-ref ref="tx_info"/>
     </logger>
     <logger name="com.foo.merlin.log.HandHeldAuditLogger">
-        <level value="info"/>
+        <level value="INFO"/>
         <appender-ref ref="HandHeld"/>
     </logger>
     <logger name="com.foo.merlin.log.SuccessLogger">
-        <level value="info"/>
+        <level value="INFO"/>
         <appender-ref ref="tx_info"/>
     </logger>
     <logger additivity="false" name="com.foo.merlin.performance">
-        <level value="info"/>
+        <level value="INFO"/>
         <appender-ref ref="tx_info"/>
     </logger>
     <logger name="com.foo.merlin.performance.ClientSideLogger">
-        <level value="info"/>
+        <level value="INFO"/>
         <appender-ref ref="Performance"/>
     </logger>
     <logger name="com.foo.merlin.performance.RAGenerationPerformance">
-        <level value="info"/>
+        <level value="INFO"/>
         <appender-ref ref="Performance"/>
     </logger>
     <logger additivity="false" name="com.mchange.v2.c3p0">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="c3p0"/>
     </logger>
     <logger name="messages">
-        <level value="trace"/>
+        <level value="TRACE"/>
         <appender-ref ref="Messages"/>
     </logger>
     <logger name="org.hibernate">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="hibernate"/>
     </logger>
     <logger name="org.hibernate.cache">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="hibernate-cache"/>
     </logger>
     <logger name="org.hibernate.jdbc">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="hibernate-jdbc"/>
     </logger>
     <logger name="org.hibernate.transaction">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="hibernate-trans"/>
     </logger>
     <logger name="org.jboss">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="JBoss"/>
     </logger>
     <logger name="org.jboss.cache">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="JBossCache"/>
     </logger>
     <logger name="org.jgroups">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="JGroups"/>
     </logger>
     <logger name="performance">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="Performance"/>
     </logger>
     <logger name="version">
-        <level value="warn"/>
+        <level value="WARN"/>
         <appender-ref ref="Version"/>
     </logger>
     <root>
-        <level value="trace"/>
+        <level value="TRACE"/>
         <appender-ref ref="Application"/>
     </root>
 </log4j:configuration>

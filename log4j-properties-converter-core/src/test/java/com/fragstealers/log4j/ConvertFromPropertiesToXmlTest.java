@@ -22,9 +22,6 @@
 
 package com.fragstealers.log4j;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.Properties;
 import com.fragstealers.log4j.jaxb.JaxbLog4JPropertiesConverter;
 import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.Validator;
@@ -34,6 +31,10 @@ import org.junit.Test;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.Properties;
 
 public class ConvertFromPropertiesToXmlTest {
 
@@ -56,10 +57,10 @@ public class ConvertFromPropertiesToXmlTest {
 
         Validator validator = new Validator(actual);
         validator.assertIsValid();
-        
+
         XMLAssert.assertXMLEqual(expected, actual);
     }
-    
+
     @Test
     public void ignoresTrailingWhitespace() throws Exception {
         StringWriter writer = new StringWriter();
@@ -74,15 +75,15 @@ public class ConvertFromPropertiesToXmlTest {
         System.out.println(expected);
         System.out.println("=============================");
         System.out.println(actual);
-        
+
         XMLUnit.setIgnoreWhitespace(true);
         XMLUnit.setControlEntityResolver(new Log4JEntityResolver());
         XMLUnit.setTestEntityResolver(new Log4JEntityResolver());
 
         Validator validator = new Validator(actual);
         validator.assertIsValid();
-        
-        XMLAssert.assertXMLEqual(expected, actual);    	
+
+        XMLAssert.assertXMLEqual(expected, actual);
     }
 
     private static class Log4JEntityResolver implements EntityResolver {
