@@ -21,7 +21,7 @@
     <modules>
         <module>log4j-properties-converter-core</module>
         <!--<module>log4j-properties-converter-cli</module>-->
-        <!--<module>log4j-properties-converter-webapp</module>-->
+        <module>log4j-properties-converter-webapp</module>
     </modules>
 
     <developers>
@@ -41,7 +41,7 @@
 
     <properties>
         <app.id>log4j-props2xml-hrd</app.id>
-        <app.version>1.2</app.version>
+        <app.version>2</app.version>
         <appengine.version>1.9.21</appengine.version>
         <gcloud.plugin.version>0.9.58.v20150505</gcloud.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -115,6 +115,7 @@
                 <version>${appengine.version}</version>
                 <configuration>
                     <enableJarClasses>false</enableJarClasses>
+                    <version>${app.version}</version>
                     <!-- Comment in the below snippet to bind to all IPs instead of just localhost -->
                     <!-- address>0.0.0.0</address>
                     <port>8080</port -->
