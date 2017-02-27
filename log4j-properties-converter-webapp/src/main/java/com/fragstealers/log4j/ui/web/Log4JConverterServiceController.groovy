@@ -21,24 +21,21 @@
  */
 
 package com.fragstealers.log4j.ui.web
-
 import com.fragstealers.log4j.core.Log4JPropertiesConverter
-import java.util.logging.Logger
-import org.apache.commons.io.IOUtils
+import groovy.json.internal.Charsets
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpHeaders
-import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.ResponseBody
+
+import java.nio.charset.Charset
+import java.util.logging.Logger
 
 @Controller
-@RequestMapping("/convert")
 class Log4JConverterServiceController {
     private static final Logger LOGGER = Logger.getLogger("com.fragstealers.log4j.ui.web.Log4JConverterServiceController");
-    private static final HttpHeaders RESPONSE_HEADERS = new HttpHeaders(contentType: MediaType.APPLICATION_XML)
     final Log4JPropertiesConverter log4JPropertiesConverter
 
     @Autowired
@@ -46,12 +43,12 @@ class Log4JConverterServiceController {
         this.log4JPropertiesConverter = log4JPropertiesConverter;
     }
 
-    @RequestMapping
-    def convert(@RequestParam("props") String propsAsText) {
+    @RequestMapping(value = "/convert", produces = ["application/xml; charset=utf-8", "text/plain; charset=utf-8"])
+    @ResponseBody
+    def convert(InputStream propsStream) {
         LOGGER.info "Preparing to process a Log4J Properties file"
-        LOGGER.fine "Contents of the file: ${propsAsText}"
         def props = new Properties()
-        props.load(IOUtils.toInputStream(propsAsText))
+        props.load(new InputStreamReader(propsStream, Charsets.UTF_8))
 
         def dest = new StringWriter()
         log4JPropertiesConverter.toXml(props, dest)
@@ -59,6 +56,8 @@ class Log4JConverterServiceController {
 
         LOGGER.info "XML file was generated"
         LOGGER.fine "Contents of the XML file: ${xmlContent}"
-        return new ResponseEntity<String>(xmlContent, RESPONSE_HEADERS, HttpStatus.OK);
+        return ResponseEntity.ok()
+                .contentType(new MediaType(MediaType.APPLICATION_XML, Charset.forName("UTF-8")))
+                .body(xmlContent);
     }
 }

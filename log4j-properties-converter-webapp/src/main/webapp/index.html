@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.6.custom.css" rel="Stylesheet"/>
     <link type="text/css" href="css/application.css" rel="Stylesheet"/>
     <link type="text/css" href="css/960.css" rel="Stylesheet"/>
@@ -24,7 +26,13 @@
                 var props = $("#props").val();
                 $(this).attr("disabled", true);
                 $("#loader").show();
-                $.post("convert", {props: props}, populateResult, "text");
+                $.ajax({
+                    url: "convert",
+                    type: "POST",
+                    data: props,
+                    contentType: "text/plain; charset=utf-8",
+                    success: populateResult,
+                    dataType : "text"});
             });
 
             $("#props").keyup(function() {
