@@ -20,7 +20,7 @@
 
     <modules>
         <module>log4j-properties-converter-core</module>
-        <!--<module>log4j-properties-converter-cli</module>-->
+        <module>log4j-properties-converter-cli</module>
         <module>log4j-properties-converter-webapp</module>
     </modules>
 
