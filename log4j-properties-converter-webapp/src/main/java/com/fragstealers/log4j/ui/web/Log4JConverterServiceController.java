@@ -22,23 +22,25 @@
 package com.fragstealers.log4j.ui.web;
 
 import com.fragstealers.log4j.core.Log4JPropertiesConverter;
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
 import java.util.Properties;
 
 @RestController
 @RequestMapping("/convert")
 public class Log4JConverterServiceController {
 
+    private static final Charset UTF8 = Charset.forName("UTF-8");
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(Log4JConverterServiceController.class);
     private final Log4JPropertiesConverter log4JPropertiesConverter;
 
@@ -48,11 +50,10 @@ public class Log4JConverterServiceController {
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/xml")
-    public ResponseEntity<String> convert(@RequestParam("props") final String propsAsText) throws IOException {
+    public ResponseEntity<String> convert(final InputStream in) throws IOException {
         LOGGER.info("Preparing to process a Log4J Properties file");
-        LOGGER.debug("Contents of the file: " + propsAsText);
         Properties props = new Properties();
-        props.load(IOUtils.toInputStream(propsAsText));
+        props.load(new InputStreamReader(in, UTF8));
 
         StringWriter dest = new StringWriter();
         log4JPropertiesConverter.toXml(props, dest);
@@ -60,6 +61,8 @@ public class Log4JConverterServiceController {
 
         LOGGER.info("XML file was generated");
         LOGGER.debug("Contents of the XML file: " + xmlContent);
-        return new ResponseEntity<>(xmlContent, HttpStatus.OK);
+        return ResponseEntity.ok()
+                        .contentType(new MediaType(MediaType.APPLICATION_XML, UTF8))
+                        .body(xmlContent);
     }
 }

@@ -44,17 +44,6 @@
 
         <plugins>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.25</version>
-
-                <configuration>
-                    <webAppConfig>
-                        <defaultsDescriptor>src/etc/jetty/webdefault.xml</defaultsDescriptor>                        
-                    </webAppConfig>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
@@ -79,6 +68,15 @@
                 </configuration>
             </plugin>
 
+            <!-- How to drive this...
+                Spin up a web server (like Jetty..)
+                    mvn appengine:devserver
+
+                Deploy to GAE
+                    mvn appengine:update
+
+            -->
+
             <plugin>
                 <groupId>com.google.appengine</groupId>
                 <artifactId>appengine-maven-plugin</artifactId>
@@ -86,14 +84,6 @@
                 <configuration>
                     <enableJarClasses>false</enableJarClasses>
                     <version>${app.version}</version>
-                    <!-- Comment in the below snippet to bind to all IPs instead of just localhost -->
-                    <!-- address>0.0.0.0</address>
-                    <port>8080</port -->
-                    <!-- Comment in the below snippet to enable local debugging with a remote debugger
-                         like those included with Eclipse or IntelliJ -->
-                    <!-- jvmFlags>
-                      <jvmFlag>-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n</jvmFlag>
-                    </jvmFlags -->
                 </configuration>
             </plugin>
             <plugin>
