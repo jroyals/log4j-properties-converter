@@ -31,6 +31,7 @@ class CommandLineUI {
         cl.h(longOpt: 'help', 'Show usage information and quit')
         cl.f(argName: 'file', longOpt: 'file', args: 1, required: true, 'Source log4j.properties file')
         cl.v(argName: 'verbose', longOpt: 'verbose', required: false, 'Prints information to the screen.')
+        cl.e(argName: 'encoding', longOpt: 'encoding', required: false, 'Encoding of the properties file. Defaults to UTF-8')
 
         def opt = cl.parse(args)
 
@@ -72,7 +73,7 @@ class CommandLineUI {
     private def loadLog4jProperties(File source, CliBuilder cl, opt) {
         def log4jProperties = new Properties()
         try {
-            log4jProperties.load(source.newInputStream())
+            log4jProperties.load(source.newReader(opt.e ?: 'UTF-8'))
         } catch (Exception e) {
             println "\nUnable to parse properties file ${opt.f}, error was ${e.message}"
             cl.usage()

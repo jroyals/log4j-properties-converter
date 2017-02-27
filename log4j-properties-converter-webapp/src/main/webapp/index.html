@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Log4J Properties to XML Converter</title>
     <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.6.custom.css" rel="Stylesheet"/>
     <link type="text/css" href="css/application.css" rel="Stylesheet"/>
@@ -25,7 +26,13 @@
                 var props = $("#props").val();
                 $(this).attr("disabled", true);
                 $("#loader").show();
-                $.post("convert", {props: props}, populateResult, "text");
+                $.ajax({
+                    url: "convert",
+                    type: "POST",
+                    data: props,
+                    contentType: "text/plain; charset=utf-8",
+                    success: populateResult,
+                    dataType : "text"});
             });
 
             $("#props").keyup(function() {
@@ -127,7 +134,7 @@
     <div class="grid_12 footer">
         <hr style="height: 0; border:1px solid; width: 75%; color: #999" />
         <div style="padding-top: 10px;">
-            Log4J Properties Converter Web Application v${project.version}. &copy; Jason Royals 2012-2015.
+            Log4J Properties Converter Web Application v${project.version}. &copy; Jason Royals 2012-2017.
         </div>
     
         <div>

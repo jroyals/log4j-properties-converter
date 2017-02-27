@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender class="org.apache.log4j.RollingFileAppender" name="R">
+        <param value="卡号.log" name="File"/>
+        <param value="1" name="MaxBackupIndex"/>
+        <param value="100KB" name="MaxFileSize"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param value="%p %t %c - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <appender class="org.apache.log4j.ConsoleAppender" name="stdout">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param value="%5p [%t] (%F:%L) - %m%n" name="ConversionPattern"/>
+        </layout>
+    </appender>
+    <logger additivity="false" name="org.hibernate.type">
+        <level value="warn"/>
+        <appender-ref ref="R"/>
+    </logger>
+    <logger name="org.hibernate.SQL">
+        <level value="debug"/>
+        <appender-ref ref="R"/>
+        <appender-ref ref="stdout"/>
+    </logger>
+    <root>
+        <level value="warn"/>
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="R"/>
+    </root>
+</log4j:configuration>
