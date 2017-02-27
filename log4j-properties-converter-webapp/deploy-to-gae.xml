@@ -1,6 +1,9 @@
+<!-- Yes this is an ant script. It needs the GAE tools available. This script updates the application
+     on the GAE host. -->
+
 <project>
     <tstamp/>
-    <property name="sdk.dir" location="/work/tools/google-app-engine"/>
+    <property name="sdk.dir" location="g:/dev/tools/appengine-java-sdk-1.9.49"/>
     <property name="work.dir" location="${java.io.tmpdir}/${DSTAMP}-${TSTAMP}"/>
 
     <import file="${sdk.dir}/config/user/ant-macros.xml"/>
