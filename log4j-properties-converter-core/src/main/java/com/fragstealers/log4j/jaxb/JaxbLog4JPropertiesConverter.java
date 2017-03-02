@@ -26,7 +26,6 @@ import com.fragstealers.log4j.core.Log4JModel;
 import com.fragstealers.log4j.core.Log4JPropertiesConverter;
 import com.fragstealers.log4j.xml.binding.Log4JConfiguration;
 import com.fragstealers.log4j.xml.binding.ObjectFactory;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -45,7 +44,7 @@ public class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
         Log4JModel model = new Log4JModel(log4jProps);
 
         configuration.setXmlnsLog4J("http://jakarta.apache.org/log4j/");
-        configuration.setThreshold(StringUtils.lowerCase(log4jProps.getProperty("log4j.threshold")));
+        configuration.setThreshold(lowerCase(log4jProps.getProperty("log4j.threshold")));
         configuration.setDebug(log4jProps.getProperty("log4j.debug"));
 
         configuration.getAppender().addAll(model.getAppenders());
@@ -72,6 +71,13 @@ public class JaxbLog4JPropertiesConverter implements Log4JPropertiesConverter {
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static String lowerCase(String str) {
+        if (str == null) {
+            return null;
+        }
+        return str.toLowerCase();
     }
 
 }

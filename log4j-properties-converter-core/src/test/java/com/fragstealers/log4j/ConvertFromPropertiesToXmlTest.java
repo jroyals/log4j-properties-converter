@@ -23,7 +23,6 @@
 package com.fragstealers.log4j;
 
 import com.fragstealers.log4j.jaxb.JaxbLog4JPropertiesConverter;
-import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.Validator;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -35,6 +34,7 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class ConvertFromPropertiesToXmlTest {
 
@@ -48,7 +48,7 @@ public class ConvertFromPropertiesToXmlTest {
 
         converter.toXml(log4jProperties, writer);
 
-        String expected = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("log4j.issue4.expected.xml"));
+        String expected = readFromStream("log4j.issue4.expected.xml");
         String actual = writer.toString();
 
         XMLUnit.setIgnoreWhitespace(true);
@@ -69,7 +69,7 @@ public class ConvertFromPropertiesToXmlTest {
 
         converter.toXml(log4jProperties, writer);
 
-        String expected = IOUtils.toString(getClass().getClassLoader().getResourceAsStream("log4j.issue5.expected.xml"));
+        String expected = readFromStream("log4j.issue5.expected.xml");
         String actual = writer.toString();
 
         System.out.println(expected);
@@ -93,5 +93,9 @@ public class ConvertFromPropertiesToXmlTest {
             }
             return null;
         }
+    }
+
+    private String readFromStream(String resource) {
+        return new Scanner(getClass().getClassLoader().getResourceAsStream(resource)).useDelimiter("\\A").next();
     }
 }
