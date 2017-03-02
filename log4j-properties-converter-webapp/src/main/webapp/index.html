@@ -10,8 +10,8 @@
     <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.elastic.js"></script>
     <script type="text/javascript">
-        
-        
+
+
         var populateResult = function(data) {
             $("#input").effect("drop", "fast", function() {
                 $("#results").show("slide", "fast");
@@ -32,16 +32,17 @@
                     data: props,
                     contentType: "text/plain; charset=utf-8",
                     success: populateResult,
-                    dataType : "text"});
+                    dataType: "text"
+                });
             });
 
-            $("#props").keyup(function() {
+            $("#props").keyup(function () {
                 var props = $("#props").val();
                 $("#convertButton").attr("disabled", $.trim(props).length == 0);
             });
 
-            $("#doAnother").click(function() {
-                $("#results").effect("drop", "fast", function() {
+            $("#doAnother").click(function () {
+                $("#results").effect("drop", "fast", function () {
                     $("#input").show("slide", "fast");
                 });
                 $("#props").val("");
@@ -58,44 +59,59 @@
 
     <script type="text/javascript">
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-4903947-8']);
-      _gaq.push(['_trackPageview']);
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-4903947-8']);
+        _gaq.push(['_trackPageview']);
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
 
     </script>
 
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script>!function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, "script", "twitter-wjs");</script>
 
     <script>
-        (function(d, s, id) {
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "http://connect.facebook.net/en_GB/all.js#xfbml=1";
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_GB/all.js#xfbml=1";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
     <script type="text/javascript">
-        (function() {
-            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        (function () {
+            var po = document.createElement('script');
+            po.type = 'text/javascript';
+            po.async = true;
             po.src = 'https://apis.google.com/js/plusone.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(po, s);
         })();
     </script>
 </head>
 <body>
 <div id="fb-root"></div>
 <div class="container_12">
-    
+
     <div class="grid_12"><h1>Log4J Properties to XML Converter</h1></div>
-    
+
     <div class="grid_12 para">
         This tool is a web front-end to the Log4J Properties Converter tool. Got a problem? Want the source?
         Head over to the <a href="https://github.com/jroyals/log4j-properties-converter">Log4J Properties Converter
@@ -105,46 +121,54 @@
         <div class="grid_12 para">
             Copy or type in your Log4J Properties below, then hit "Convert".
         </div>
-    
+
         <div class="grid_12">
             <input type="button" value="Convert" id="convertButton">
             <img src="images/ajax-loader.gif" alt="Loading..." id="loader" style="vertical-align: bottom"/>
         </div>
-    
+
         <div class="grid_12">
             <textarea id="props" class="input" wrap="off" style="width: 100%;"></textarea>
         </div>
-    
+
     </div>
     <div id="results">
         <!--<div class="success">Success!</div>-->
-        <div class="grid_12 para">The conversion is below.  <a href="#" id="doAnother">Do another?</a></div>
+        <div class="grid_12 para">The conversion is below. <a href="#" id="doAnother">Do another?</a></div>
         <div class="grid_12 blankButton">&nbsp;</div>
         <div class="grid_12">
             <textarea id="resultsArea" wrap="off" class="input" style="width: 100%;"></textarea>
         </div>
     </div>
-    
+
     <div style="height: 35px; display: inline; float: left; padding-top: 10px;">
-        <div class="grid_2 prefix_2"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://log4j-props2xml.appspot.com/" data-via="jroyals">Tweet</a></div>
-        <div class="grid_4"><div class="fb-like" data-href="http://log4j-props2xml.appspot.com/" data-send="false" data-width="300" data-show-faces="false"></div></div>
-        <div class="grid_4 align_right"><g:plusone size="medium" annotation="inline" width="300" href="http://log4j-props2xml.appspot.com/"></g:plusone></div>
+        <div class="grid_2 prefix_2"><a href="https://twitter.com/share" class="twitter-share-button"
+                                        data-url="https://log4j-props2xml.appspot.com/" data-via="jroyals">Tweet</a>
+        </div>
+        <div class="grid_4">
+            <div class="fb-like" data-href="https://log4j-props2xml.appspot.com/" data-send="false" data-width="300"
+                 data-show-faces="false"></div>
+        </div>
+        <div class="grid_4 align_right"><g:plusone size="medium" annotation="inline" width="300"
+                                                   href="https://log4j-props2xml.appspot.com/"></g:plusone></div>
     </div>
 
     <div class="grid_12 footer">
-        <hr style="height: 0; border:1px solid; width: 75%; color: #999" />
+        <hr style="height: 0; border:1px solid; width: 75%; color: #999"/>
         <div style="padding-top: 10px;">
             Log4J Properties Converter Web Application v${project.version}. &copy; Jason Royals 2012-2017.
         </div>
-    
+
         <div>
             Source code for the converter, including this web application,
-            are available from the <a href="https://github.com/jroyals/log4j-properties-converter">Log4J Properties Converter
+            are available from the <a href="https://github.com/jroyals/log4j-properties-converter">Log4J Properties
+            Converter
             project page</a>. This software is licensed to you under the
             <a href="http://www.gnu.org/licenses">GNU Public License, version 3</a>.
         </div>
-        <div  style="padding-top: 10px;">
-            <img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+        <div style="padding-top: 10px;">
+            <img src="https://code.google.com/appengine/images/appengine-silver-120x30.gif"
+                 alt="Powered by Google App Engine"/>
         </div>
     </div>
 </div>
