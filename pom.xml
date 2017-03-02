@@ -44,7 +44,7 @@
     </properties>
 
     <prerequisites>
-        <maven>3.1.0</maven>
+        <maven>3.3.0</maven>
     </prerequisites>
 
     <dependencies>
@@ -64,6 +64,17 @@
 
     <build>
         <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
