@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation=" http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -9,7 +8,7 @@
     <artifactId>log4j-converter</artifactId>
     <packaging>pom</packaging>
     <name>Log4J Properties Converter</name>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
 
     <licenses>
         <license>
@@ -36,7 +35,7 @@
         <url>https://github.com/jroyals/log4j-properties-converter</url>
         <connection>scm:git:https://github.com/jroyals/log4j-properties-converter.git</connection>
         <developerConnection>scm:git:https://github.com/jroyals/log4j-properties-converter.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>log4j-converter-1.2</tag>
     </scm>
 
     <properties>
